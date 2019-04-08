@@ -1,21 +1,31 @@
 # JupyterBin
-The overall goal of this project is to create an extension for Github that runs Jupyter Notebooks in a way that is easily accessable to students.
+## Project Info
+JupyterBin is a web solution for storing Jupyter Notebooks. It will be an extension of Github with the ability to run notebooks online and upload them to a repostiory stored in Github.
+## Group Members
+<b>Daniell Powell </b> - dpowell@mavs.coloradomesa.edu
+Assignments:
+* Oauth [done]
+* Website setup
+* Ansible tracking
 
-## Goals
-JupyterHub will include
-* A new look to the Jupyterhub interface that is cleaner
-* Deployable options for schools to host either in the cloud (Stretch) or on a local server
-	* Priority is local CMU server
-* Login with Github to fork notebooks from professors
-* Utilize autograders for easy classroom management
+<b>Bader Alkhamees </b> - bmalkhamees@mavs.coloradomesa.edu
+Assignments:
+* Database [done]
+* Integration w/frontend
+* Ansible research
 
-## Team
-Our team includes Bader, Amanda, and Daniell.
 
-## Deadlines
+<b>Amanda Smith </b> - amsmith2@mavs.coloradomesa.edu
+Assignemnts:
+* Front end design/redesign [wip]
+* Help with Anisble playbooks
+
+## Client
+Ram Basnet - Computer Science professor at Colorado Mesa University.
+[Contract can be found here.](https://github.com/amsmite001/Soft_Eng/blob/master/Contract.pdf)
+
+## Issues
+There's a lot about this project we don't know about yet - like Ansible, so a lot of time is going into research to find the best solutions for problems that we run across.
 ---
-We have two major deadlines set aside: The Student Showcase in April and the final project deadline in early May.
-Individual components include:
-* <b>Amanda</b>: Web desin (front end aspect), some Ansible
-* <b>Bader</b>: Database management and integration with front end. Some Packer
-* <b>Daniell</b>: Oauth for Github, Ansible, Packer, getting access to the school server.
+## Notes
+Jupyter Notebook/Hub is attached as submodules.
