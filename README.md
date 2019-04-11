@@ -7,18 +7,22 @@ Assignments:
 * Oauth [done]
 * Website setup
 * Ansible tracking
+* Kernel setup
 
 <b>Bader Alkhamees </b> - bmalkhamees@mavs.coloradomesa.edu
 Assignments:
 * Database [done]
 * Integration w/frontend
 * Ansible research
-
+* Packer/Vagrant research & setup
+*
 
 <b>Amanda Smith </b> - amsmith2@mavs.coloradomesa.edu
 Assignemnts:
-* Front end design/redesign [wip]
+* Front end design/redesign
 * Help with Anisble playbooks
+* Kernel Setup
+* JupyterLab Setup
 
 ## Client
 Ram Basnet - Computer Science professor at Colorado Mesa University.
