@@ -15,7 +15,6 @@ Assignments:
 * Integration w/frontend
 * Ansible research
 * Packer/Vagrant research & setup
-*
 
 <b>Amanda Smith </b> - amsmith2@mavs.coloradomesa.edu
 Assignemnts:
@@ -28,8 +27,8 @@ Assignemnts:
 Ram Basnet - Computer Science professor at Colorado Mesa University.
 [Contract can be found here.](https://github.com/amsmite001/Soft_Eng/blob/master/Contract.pdf)
 
-## Issues
-There's a lot about this project we don't know about yet - like Ansible, so a lot of time is going into research to find the best solutions for problems that we run across.
+## Configuration
+Please see jupyter_README.MD and jupyterLab_README.MD for configuration and setup instructions.
 ---
 ## Notes
 Jupyter Notebook/Hub is attached as submodules.
