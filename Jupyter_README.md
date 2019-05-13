@@ -80,7 +80,7 @@ You can access the server with `https://localhost:8000`.
 
 ## Nginx-Configuration
 
-Danieelllll wtf is this hell
+This is to configure the security keys for Jupyterhub and SSL:
 
 ``` (bash)
 cd /srv
@@ -120,19 +120,25 @@ from git import Repo
 
 c = get_config()
 c.JupyterHub.log_level = 10
+
+#Spawn JupyterLab
 c.Spawner.cmd = '/home/user/anaconda3/bin/jupyter-labhub'
 
+#True means that each time a user logs in, the default Git repo will overwrite the local files
 ERASE_DIR = False
 
+#Github Oath authentication
 from oauthenticator.github import LocalGitHubOAuthenticator
 c.JupyterHub.authenticator_class = LocalGitHubOAuthenticator
-
 c.LocalGitHubOAuthenticator.create_system_users = True
-
+#Github credentials
 c.LocalGitHubOAuthenticator.oauth_callback_url = 'https://notebooks.jupyterbin.com/hub/oauth_callback'
 c.LocalGitHubOAuthenticator.client_id = 'd4aae9cc903709f55b06'
 c.LocalGitHubOAuthenticator.client_secret = 'a237b7239d22a22c50e5b77d6df695572d024bfd'
 
+#This is how the authenticator adds PAM credentials upon new user. 
+#"--force-badname" allows usernames that start with a number, for example, so that all github usernames
+#may be used
 c.Authenticator.add_user_cmd = ['adduser', '-q', '--gecos', '""', '--disabled-password', '--force-badname']
 # Cookie Secret Files
 c.JupyterHub.cookie_secret_file = '/srv/jupyterhub/jupyterhub_cookie_secret'
@@ -140,9 +146,11 @@ c.ConfigurableHTTPProxy.auth_token = '/srv/jupyterhub/proxy_auth_token'
 c.Authenticator.delete_invalid_users = True
 
 #c.Authenticator.whitelist = {'user'}
-c.Authenticator.admin_users = {'user, [Git_Username'}
-# Configuration file for jupyterhub.
 
+#Make sure that your master PAM user and admin Github username are listed here for admin purposes
+c.Authenticator.admin_users = {'user, [Git_Username]'}
+
+#This pulls down specified Github and replicates it locally upon user creation
 def create_dir_hook(spawner):
     """
     A function to clone a github repo into a specific directory of a 
@@ -185,13 +193,12 @@ def clone_repo(user, git_url, repo_dir):
 
 
 c.Spawner.pre_spawn_hook = create_dir_hook
-c.Authenticator.admin_users = {'[Git_Username]'}
 ```
 
 A few points to configure:
 
-- There are two points of `Git_Username`, change them to the username of the individual whom you'd like to be admin.
-- `git_url = "https://github.com/2kreate/jbin.git"` needs to be changed to whichever default repo.
+- Change `Git_Username` to the username of the individual whom you'd like to be admin.
+- `git_url = "https://github.com/2kreate/jbin.git"` needs to be changed to whichever default repo you would like the users to start with.
 
 ## JAAS
 
@@ -228,7 +235,7 @@ sudo systemctl daemon-reload
 
 ## OAuth
 
-/shrug I know nothing. I think it's already done with config. Maybe need to seperate config sections
+This configuration example is specific for Github Oathenticator
 
 ---
 
@@ -236,7 +243,7 @@ sudo systemctl daemon-reload
 
 Jupyter allows the customization of it's html files via templates. To use the provided template override, navigate to `anaconda3/share/jupyterhub/templates` and replace the `login.html` with the provided one.
 
-Editing templates follows Ginja styling, and are just a matter of editing/replacing existing files.
+Editing templates follows Jinja styling, and are just a matter of editing/replacing existing files.
 
 ---
 
@@ -250,3 +257,5 @@ sudo systemctl stop jupyterhub
 ```
 
 This will mimic a restart if necessary. You can see the server status with the `status` flag instead of `start/stop`.
+
+sudo journalctl -u jupyterhub gives you access to the full Jupyterhub log.
